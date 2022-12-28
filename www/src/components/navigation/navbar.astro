@@ -5,7 +5,7 @@ import GithubIcon from "./githubIcon.astro";
 import Search from "./Search";
 import LanguageSelect from "./LanguageSelect";
 import SidebarToggle from "./sidebarToggle.astro";
-import ThemeToggleButton from "./themeToggleButton.astro";
+import ThemeDropdown from "./ThemeDropdown";
 
 export interface Props {
   isNotFound?: boolean;
@@ -87,13 +87,9 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     <div class="flex flex-grow items-center justify-end gap-4">
       <GithubIcon />
       {!isLanding && <LanguageSelect language={langCode} client:load />}
-      <div
-        class={clsx("text-center", {
-          hidden: isLanding,
-        })}
-      >
-        <ThemeToggleButton />
-      </div>
+
+      {!isLanding && <ThemeDropdown client:load />}
+
       <div class="block md:hidden">
         <SidebarToggle isLanding={isLanding} />
       </div>

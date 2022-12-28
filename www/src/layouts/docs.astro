@@ -49,11 +49,13 @@ const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
         ) {
           return localStorage.getItem("theme");
         }
+
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
           return "dark";
         }
         return "light";
       })();
+
       if (theme === "light") {
         html.classList.remove("dark");
         html.classList.add("light");
